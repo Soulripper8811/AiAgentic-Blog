@@ -12,7 +12,9 @@ function Provider({
   const { user } = useUser();
 
   const createNewUser = async () => {
-    const result = await axios.post("/api/user");
+    const result = await axios.post(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/user`
+    );
     return result.data;
   };
   useEffect(() => {

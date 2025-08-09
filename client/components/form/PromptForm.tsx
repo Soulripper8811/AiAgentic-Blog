@@ -32,7 +32,10 @@ const PromptForm = () => {
     }
     if (prompt.trim()) {
       try {
-        const result = await axios.post("/api/blog", { prompt });
+        const result = await axios.post(
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blog`,
+          { prompt }
+        );
         console.log(result);
         if (result.data && result.data.id) {
           router.push(`/blog/${result.data.id}`);
