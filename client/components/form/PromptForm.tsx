@@ -5,11 +5,14 @@ import { Button } from "../ui/button";
 import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const PromptForm = () => {
   const router = useRouter();
   const { user } = useUser();
-  const [prompt, setPrompt] = useState("");
+  const [prompt, setPrompt] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (user) {
       setPrompt(localStorage.getItem("prompt") || "");
@@ -17,8 +20,9 @@ const PromptForm = () => {
     }
   }, [user]);
 
-  const handlePromptSubmit = (e: React.FormEvent) => {
+  const handlePromptSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     if (!user) {
       const localPrompt = prompt.trim();
       if (localPrompt) {
@@ -27,8 +31,17 @@ const PromptForm = () => {
       }
     }
     if (prompt.trim()) {
-      console.log("Generating blog for:", prompt);
-      // Handle prompt submission
+      try {
+        const result = await axios.post("/api/blog", { prompt });
+        console.log(result);
+        if (result.data && result.data.id) {
+          router.push(`/blog/${result.data.id}`);
+        }
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false);
+      }
     }
   };
   return (
@@ -61,10 +74,15 @@ const PromptForm = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 text-white border-0 text-lg px-12 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className={`bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 hover:from-purple-600 hover:via-pink-600 hover:to-purple-700 text-white border-0 text-lg px-12 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 ${
+                    loading ? "animate-pulse" : ""
+                  }`}
+                  disabled={loading}
                 >
-                  <Sparkles className="w-5 h-5 mr-3" />
-                  Generate My Blog
+                  <Sparkles
+                    className={`w-5 h-5 mr-3 ${loading ? "animate-spin" : ""}`}
+                  />
+                  {loading ? "Generating Blog... ✨" : "Generate My Blog"}
                   <ArrowRight className="ml-3 w-5 h-5" />
                 </Button>
               ) : (

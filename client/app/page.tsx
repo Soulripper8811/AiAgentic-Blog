@@ -15,8 +15,9 @@ import {
 import Image from "next/image";
 import PromptForm from "@/components/form/PromptForm";
 import Footer from "@/components/Common/Footer";
+import WorkflowExample from "@/components/Common/workflow";
 
-export default async function LandingPage() {
+export default function LandingPage() {
   return (
     <div>
       <div className="relative overflow-hidden">
@@ -191,13 +192,7 @@ export default async function LandingPage() {
 
             <div className="flex justify-center">
               <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-xl max-w-5xl w-full">
-                <Image
-                  src="/next.svg"
-                  alt="AgenticBlog AI Workflow - showing the process from Start through Title Creation, Content Generation, Content Validation, Image Generation to End"
-                  className="w-full h-auto rounded-lg"
-                  width={1200}
-                  height={800}
-                />
+                <WorkflowExample />
               </div>
             </div>
           </div>

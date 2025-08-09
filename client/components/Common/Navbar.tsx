@@ -25,8 +25,11 @@ const Navbar = async () => {
             <div className="flex items-center space-x-2">
               <UserButton />
               <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white border-0">
-                <Link href="/user-blog">UserBlog</Link>
+                <Link href="/">create More</Link>
                 <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+              <Button variant={"ghost"}>
+                <Link href="/blog">Allblogs</Link>
               </Button>
             </div>
           ) : (

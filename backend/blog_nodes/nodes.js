@@ -21,7 +21,8 @@ export const titleNode = async (state) => {
 };
 
 export const contentNode = async (state) => {
-  const prompt = `Write a detailed blog post for the title: "${state.title}"`;
+  // const prompt = `Write a detailed blog post for the title: "${state.title}"`;
+  const prompt = `Write a detailed blog post in Markdown format only for the title: "${state.title}". The post should be structured with numbered sections, including an introduction, key points, and a conclusion. Use a conversational yet informative tone, incorporating relevant facts, examples, and sources (e.g., NOAA, NASA, or similar). Add emojis (e.g., 🌊, 🌍, 🐠) to enhance engagement, ensuring they are relevant to the content. Include a "What Can You Do?" section with a bulleted list of actions and a "Further Reading & Resources" list. The content should be comprehensive, similar in depth to a 10-section blog post about the ocean, covering the topic's significance, history, functions, challenges, and future outlook. Do not include any tables; use narrative text and bulleted lists instead. Do not include any code blocks, HTML, or non-Markdown formatting. Do not provide explanations or additional text outside the Markdown content`;
 
   const response = await chatModel.invoke([new HumanMessage(prompt)]);
   console.log("contentNode response:", response.content);

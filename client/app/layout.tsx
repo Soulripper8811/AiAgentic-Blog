@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Common/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
+import Provider from "./provider";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -25,8 +26,10 @@ export default function RootLayout({
         <body
           className={`${poppins.className} antialiased min-h-screen bg-gradient-to-br from-orange-50 via-pink-50 to-rose-100`}
         >
-          <Navbar />
-          {children}
+          <Provider>
+            <Navbar />
+            {children}
+          </Provider>
         </body>
       </html>
     </ClerkProvider>
