@@ -33,7 +33,7 @@ const PromptForm = () => {
     if (prompt.trim()) {
       try {
         const result = await axios.post(
-          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blog`,
+          `https://ai-agentic-blog.vercel.app/api/blog`,
           { prompt }
         );
         console.log(result);

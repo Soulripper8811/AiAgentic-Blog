@@ -9,7 +9,7 @@ interface ShareModalProps {
 
 export default function ShareModal({ blogId }: ShareModalProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const shareUrl = `${process.env.NEXT_PUBLIC_URL}/blog/${blogId}`;
+  const shareUrl = `https://ai-agentic-blog.vercel.app/blog/${blogId}`;
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {

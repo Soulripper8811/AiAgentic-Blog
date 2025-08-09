@@ -12,7 +12,9 @@ function Provider({
   const { user } = useUser();
 
   const createNewUser = async () => {
-    const result = await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/user`);
+    const result = await axios.post(
+      `https://ai-agentic-blog.vercel.app/api/user`
+    );
     return result.data;
   };
   useEffect(() => {
