@@ -12,7 +12,6 @@ import {
   Bot,
   FileText,
 } from "lucide-react";
-import Image from "next/image";
 import PromptForm from "@/components/form/PromptForm";
 import Footer from "@/components/Common/Footer";
 import WorkflowExample from "@/components/Common/workflow";
