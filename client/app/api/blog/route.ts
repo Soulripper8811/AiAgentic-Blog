@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     const author = userProfile[0].email.split("@")[0];
     //create new blog
     const newBlog = await axios.post(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/ai-blog`,
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/blog`,
       {
         prompt,
       }

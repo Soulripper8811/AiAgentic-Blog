@@ -64,6 +64,7 @@ const PromptForm = () => {
                 placeholder="✨ Tell me about your blog idea... "
                 className="w-full h-32 p-6 bg-gray-50/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl text-gray-800 placeholder:text-gray-500 focus:border-purple-400 focus:ring-2 focus:ring-purple-400/50 focus:outline-none resize-none text-lg leading-relaxed"
                 rows={4}
+                disabled={loading}
               />
               <div className="absolute bottom-4 right-4 text-gray-500 text-sm">
                 {prompt.length}/500

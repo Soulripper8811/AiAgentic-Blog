@@ -5,6 +5,18 @@ import Image from "next/image";
 import { format } from "date-fns";
 import ReactMarkdown from "react-markdown";
 import ShareModal from "@/components/Common/ShareModal";
+import Link from "next/link";
+
+const cleanMarkdownContent = (content: string) => {
+  return content
+    .split("\n")
+    .filter(
+      (line) =>
+        !line.trim().startsWith("(Note:") &&
+        !line.trim().toLowerCase().startsWith("source:")
+    )
+    .join("\n");
+};
 
 const BlogSinglePage = async ({
   params,
@@ -57,7 +69,7 @@ const BlogSinglePage = async ({
             src={imageUrl}
             alt={title}
             fill
-            className="object-cover "
+            className="object-cover"
             priority
           />
         </div>
@@ -75,19 +87,19 @@ const BlogSinglePage = async ({
 
         {/* Blog Content */}
         <article className="prose prose-gray max-w-none">
-          <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
-            <ReactMarkdown>{content}</ReactMarkdown>
+          <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200 overflow-x-auto">
+            <ReactMarkdown>{cleanMarkdownContent(content)}</ReactMarkdown>
           </div>
         </article>
 
         {/* Navigation & Share */}
         <div className="mt-8 flex justify-between items-center">
-          <a
+          <Link
             href="/blog"
             className="inline-block text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200"
           >
             ← Back to Blog
-          </a>
+          </Link>
           <ShareModal blogId={blogId} />
         </div>
       </div>

@@ -116,7 +116,24 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.prose th {
+  background-color: #f8f9fa;
+  font-weight: bold;
 }
