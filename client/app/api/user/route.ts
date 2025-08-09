@@ -4,6 +4,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { users } from "@/db/schema";
 import { db } from "@/db/drizzle";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function POST(req: NextRequest) {
   try {
     const user = await currentUser();

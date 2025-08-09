@@ -10,14 +10,15 @@ function Provider({
   children: React.ReactNode;
 }>) {
   const { user } = useUser();
-  useEffect(() => {
-    user && createNewUser();
-  }, [user]);
 
   const createNewUser = async () => {
     const result = await axios.post("/api/user");
     return result.data;
   };
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    user && createNewUser();
+  }, [user]);
 
   return <div>{children}</div>;
 }
