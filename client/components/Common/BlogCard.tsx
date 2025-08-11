@@ -11,7 +11,7 @@ interface BlogCardSmallProps {
 
 export function BlogCardSmall({ blog }: BlogCardSmallProps) {
   return (
-    <Card className="w-80 overflow-hidden rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+    <Card className=" w-80 overflow-hidden rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
       <div className="relative h-48 w-full group">
         <Image
           src={blog.imageUrl}
